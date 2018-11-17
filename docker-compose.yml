@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mq:
+    image: dxclatam/mqha:1.1
+    build:
+      context: .
+      dockerfile: Dockerfile-mq
+    restart: always
+    ports:
+    - "1414:1414"
+    - "9443:9443"
+    environment:
+      MQ_ENV: prod
+      MQ_QMGR_NAME: QMLTP01
+    replicas: 2
+    endpoint_mode: vip
+    volumes:
+      - varmqm:/var/mqm
+volumes:
+  varmqm:
+networks:
+  overlay:

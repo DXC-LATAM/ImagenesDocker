@@ -1,4 +1,4 @@
-version: '3'
+version: '3.4'
 services:
   mq:
     image: dxclatam/mqha:1.1
@@ -12,8 +12,7 @@ services:
     environment:
       MQ_ENV: prod
       MQ_QMGR_NAME: QMLTP01
-    replicas: 2
-    endpoint_mode: vip
+      port: 9443
     volumes:
       - varmqm:/var/mqm
 volumes:
